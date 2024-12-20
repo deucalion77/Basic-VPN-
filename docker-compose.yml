@@ -10,6 +10,7 @@ services:
     volumes:
       - ./data1:/data
       - ./vpn1.py:/vpn/vpn.py
+      - ./sniffer.py:/vpn/sniffer.py
     networks:
       network-c:
         ipv4_address: 192.168.10.100
