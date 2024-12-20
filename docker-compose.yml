@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  ubuntu1:
+    build: .
+    image: ubuntu:latest
+    container_name: ubuntu_container01
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./data1:/data
+    networks:
+      network-a:
+        ipv4_address: 192.168.1.100
+
+  ubuntu2:
+    build: .
+    image: ubuntu:latest
+    container_name: ubuntu_container02
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./data2:/data
+    networks:
+      network-b:
+        ipv4_address: 192.168.2.100
+
+networks:
+   network-a:
+     driver: bridge
+     ipam: 
+       config:
+         - subnet: 192.168.1.0/24
+
+   network-b:
+     driver: bridge
+     ipam: 
+       config:
+         - subnet: 192.168.2.0/24
+  
+
+
+
+
